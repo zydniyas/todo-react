@@ -5,10 +5,12 @@ export default function InputFeid() {
   const { addTodo, note, setNote } = useContext(TodoContext);
 
   return (
-    <form>
-      <label htmlFor="chat" className="sr-only">
-        Your message
-      </label>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        addTodo();
+      }}
+    >
       <div className="flex items-center px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
         <input
           onChange={(e) => setNote(e.target.value)}
@@ -19,8 +21,7 @@ export default function InputFeid() {
           placeholder="Your notes..."
         ></input>
         <button
-          onClick={addTodo}
-          type="button"
+          type="submit"
           className="inline-flex justify-center p-2 text-blue-600 rounded-full cursor-pointer hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-600"
         >
           <svg
